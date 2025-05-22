@@ -4,11 +4,13 @@
 
     class LFamilia implements IFamilia{
         public function guardar(Familia $familia){
-            $db = new BD();
-            $cn = $db->conectar();
-            $sql='isert into familia (nombre, descripcion) values (:nom, :des)';
+            $db=new DB();
+            $cn=$db->conectar();
+            $sql="insert into familia (nombre, descripcion) values (:nom, :des)";
             $ps=$cn->prepare($sql);
-            $ps->bindParam("nom", $this->getNombre);
+            $ps->bindParam(":nom", $familia->getNombre());
+            $ps->bindParam(":des", $familia->getDescripcion());
+            $ps->execute();
         }
         public function cargar(){
             $db = new DB();

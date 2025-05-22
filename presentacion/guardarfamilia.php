@@ -6,4 +6,4 @@
     $log=new LFamilia();
     $log->guardar($fam);
     echo 'DATOS GUARDADOS';
-?>
+?>  

@@ -8,7 +8,12 @@
             $cn = $db->conectar();
             $sql='insert into cliente (nombre, apellidos, dni, celular, direccion) values (:nom, :des, :dni, :cel, :dir)';
             $ps=$cn->prepare($sql);
-            $ps->bindParam("nom", $this->getNombre);
+            $ps->bindParam("nom", $cliente->getNombre());
+            $ps->bindParam("nom", $cliente->getApellidos());
+            $ps->bindParam("nom", $cliente->getDni());
+            $ps->bindParam("nom", $cliente->getCelular());
+            $ps->bindParam("nom", $cliente->getDireccion());
+            $ps->execute();
         }
         public function cargar(){
             $db = new DB();
@@ -28,7 +33,7 @@
                 $cli->setDireccion($f[5]);
                 array_push($clientes, $cli);
             }
-            return $familias;
+            return $clientes;
         }
     }
 ?>
