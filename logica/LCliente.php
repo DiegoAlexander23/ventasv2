@@ -4,15 +4,15 @@
 
     class LCliente implements ICliente{
         public function guardar(Cliente $cliente){
-            $db = new BD();
-            $cn = $db->conectar();
+            $db=new DB();
+            $cn=$db->conectar();
             $sql='insert into cliente (nombre, apellidos, dni, celular, direccion) values (:nom, :des, :dni, :cel, :dir)';
             $ps=$cn->prepare($sql);
             $ps->bindParam("nom", $cliente->getNombre());
-            $ps->bindParam("nom", $cliente->getApellidos());
-            $ps->bindParam("nom", $cliente->getDni());
-            $ps->bindParam("nom", $cliente->getCelular());
-            $ps->bindParam("nom", $cliente->getDireccion());
+            $ps->bindParam("des", $cliente->getApellidos());
+            $ps->bindParam("dni", $cliente->getDni());
+            $ps->bindParam("cel", $cliente->getCelular());
+            $ps->bindParam("dir", $cliente->getDireccion());
             $ps->execute();
         }
         public function cargar(){

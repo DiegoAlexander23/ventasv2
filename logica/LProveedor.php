@@ -6,30 +6,28 @@
         public function guardar(Proveedor $proveedor){
             $db=new DB();
             $cn=$db->conectar();
-            $sql="insert into Proveedor (nombre, ruc) values (:nom, :ruc)";
+            $sql="insert into PROVEEDOR (nombre, ruc) values (:nom, :ruc)";
             $ps=$cn->prepare($sql);
             $ps->bindParam(":nom", $proveedor->getNombre());
             $ps->bindParam(":ruc", $proveedor->getRuc());
-            $ps->execute();
+            $ps->execute(); 
         }
-
-
         public function cargar(){
             $db = new DB();
             $cn = $db->conectar();
             $sql='select * from Proveedor';
             $ps=$cn->prepare($sql);
             $ps->execute();
-            $proveedor=array();
+            $proveedores=array();
             $filas=$ps->fetchall();
             foreach($filas as $f){
-                $pro=new Proveedor();
+                $pro=new proveedor();
                 $pro->setIdProveedor($f[0]);
                 $pro->setNombre($f[1]);
                 $pro->setRuc($f[2]);
-                array_push($proveedor, $pro);
+                array_push($proveedores, $pro);
             }
-            return $proveedor;
+            return $proveedores;
         }
     }
 ?>

@@ -1,6 +1,6 @@
 <?php
-    class Porveedor{
-        private $idProveedor;
+    class Proveedor{
+        private $idproveedor;
         private $nombre;
         private $ruc;
 
@@ -8,7 +8,7 @@
             return $this->idproveedor;
         }
         public function setIdProveedor($idproveedor){
-            $this->idproveedor=$proveedor;
+            $this->idproveedor=$idproveedor;
         }
         public function getNombre(){
             return $this->nombre;

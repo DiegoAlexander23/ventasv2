@@ -17,7 +17,7 @@
             $this->nombre=$nombre;  
         }
         public function getIdFamilia(){
-            return $this->IdFamilia;
+            return $this->idfamilia;
         }
         public function setIdFamilia($idfamilia){
             $this->idfamilia=$idfamilia;
