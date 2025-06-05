@@ -68,5 +68,5 @@
         $log=new LProducto();
         $log->guardar($pro);
         header('Location: cargarproductos.php');
-    }
+    }//nose 
 ?>  
