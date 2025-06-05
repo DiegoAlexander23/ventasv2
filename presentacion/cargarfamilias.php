@@ -10,7 +10,7 @@
         <h1>Listado de Familias</h1>
         <hr>
         <a href="guardarfamilia.php">Crear Nuevo</a>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <td>ID</td>

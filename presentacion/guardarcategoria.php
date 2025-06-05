@@ -8,14 +8,7 @@
 <body>
     <div>
         <?php
-            require '../datos/DB.php';
-            $db=new DB();
-            $cn=$db->conectar();
-            $sql='select * from familia';
-            $ps=$cn->prepare($sql);
-            $ps->execute();
-            $filass=$ps->fetchall();  
-
+            require_once '../logica/Lfamilia.php';
         ?>
         <h1>Insercion de Categorias</h1>
         <hr>
@@ -24,10 +17,12 @@
             <select name="cbxIdFam" id="">
                 <option >seleccione</option>
                 <?php
-                    foreach($filass as $f){
+                    $logFam=new LFamilia();
+                    $familias=$logFam->cargar();
+                    foreach ($familias as $fam) {
                 ?>
-                <option value="<?=$f[0]?>"><?=$f[1]?></option>
-                <?php  
+                <option value="<?=$fam->getIdFamilia()?>"><?=$fam->getNombre()?></option>
+                <?php
                     }
                 ?>
             </select><br>
@@ -37,13 +32,13 @@
 </body>
 </html>
 <?php
+    require_once '../logica/LCategoria.php';
     if ($_POST){
-        require '../logica/LCategoria.php';
         $cat=new Categoria();
         $cat->setNombre($_POST['txtNom']);
         $cat->setIdFamilia($_POST['cbxIdFam']);
         $log=new LCategoria();
         $log->guardar($cat);
         header('Location: cargarcategorias.php');
-        }
+    }
 ?> 

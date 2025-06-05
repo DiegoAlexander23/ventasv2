@@ -7,20 +7,20 @@
 </head>
 <body>
     <div>
-        <h1>Listado de Familias</h1>
+        <h1>Listado de Categorias</h1>
         <hr>
         <a href="guardarcategoria.php">Crear Nuevo</a>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <td>ID</td>
                     <td>Nombre</td>
-                    <td>IdFfamilia</td>
+                    <td>IdFamilia</td>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    require '../logica/LCategoria.php';
+                    require_once '../logica/LCategoria.php';
                     $log= new LCategoria;
                     foreach ($log->cargar() as $categoria) {
                 ?>
