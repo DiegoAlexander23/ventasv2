@@ -33,5 +33,25 @@
             }
             return $productos;
         }
+        public function cargarPorCategoria($idcat){
+            $db = new DB();
+            $cn = $db->conectar();
+            $sql='select * from producto where idcategoria=:idcat';
+            $ps=$cn->prepare($sql);
+            $ps->bindParam(":idcat", $idcat);
+            $ps->execute();
+            $productos=array();
+            $filas=$ps->fetchall();
+            foreach($filas as $f){
+                $pro=new Producto();
+                $pro->setIdProducto($f[0]);
+                $pro->setNombre($f[1]);
+                $pro->setStock($f[2]);
+                $pro->setMonto($f[3]);
+                $pro->setIdCategoria($f[4]);
+                array_push($productos, $pro);
+            }
+            return $productos;
+        }
     }
 ?>

@@ -1,4 +1,5 @@
 <?php
+//quien puso su archivo aqui de clinica lo movi en la D: clinica
     class DB{
         private $url='mysql:host=localhost;dbname=VENTASSENATIDB';
         private $user='root';
